@@ -14,8 +14,8 @@ class User:
         self.received_messages = []
         self.message_limit = 0
 
-    def receive_message(self, message_obj):
-        self.received_messages.append(message_obj)
+    def receive_message(self, message):
+        self.received_messages.append(message)
         return True
 
     def get_inbox_view(self):
