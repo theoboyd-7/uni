@@ -7,7 +7,7 @@ class User:
 
     users_count = 0
 
-    def __init__(self, username, user_id):
+    def __init__(self, username):
         self.username = username
         User.user_count += 1
         self.user_id = User.user_count
