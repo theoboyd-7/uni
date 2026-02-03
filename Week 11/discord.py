@@ -4,12 +4,13 @@ class Message:
         self.is_pinned = False
 
 class User:
-    id_counter = 1 
-    
-    def __init__(self, username):
+
+    users_count = 0
+
+    def __init__(self, username, user_id):
         self.username = username
-        self.user_id = User.id_counter
-        User.id_counter += 1
+        User.user_count += 1
+        self.user_id = User.user_count
         
         self.received_messages = []
         self.message_limit = 0
