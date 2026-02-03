@@ -5,7 +5,7 @@ class Message:
 
 class User:
 
-    users_count = 0
+    user_count = 0
 
     def __init__(self, username):
         self.username = username
