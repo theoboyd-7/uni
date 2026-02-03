@@ -1,6 +1,7 @@
 class Gallery:
 
-    def __init__(self):
+    def __init__(self, name):
+        self.name = name
         self.exhibitions = []
 
     def add_exhibition(self, exhibition):
@@ -8,7 +9,7 @@ class Gallery:
 
     def __str__(self):
         output = "=" * 40 + "\n"
-        output += f"The gallery has {len(self.exhibitions)} exhibitions.\n"
+        output += f"The {self.name} Gallery has {len(self.exhibitions)} exhibitions.\n"
         output += "=" * 40 + "\n"
         for exhibition in self.exhibitions:
             output += f"Exhibition {self.exhibitions.index(exhibition)+1}\n{exhibition}\n"
@@ -18,7 +19,8 @@ class Gallery:
 
 class Exhibition:
     
-    def __init__(self, start_date, end_date):
+    def __init__(self, name, start_date, end_date):
+        self.name = name
         self.art_pieces = []
         self.start_date = start_date
         self.end_date = end_date
@@ -37,7 +39,8 @@ class Exhibition:
         return self.total_value
 
     def __str__(self):
-        output = f"Dates: {self.start_date} to {self.end_date}\n"
+        output = f"Exhibition: {self.name}\n"
+        output += f"Dates: {self.start_date} to {self.end_date}\n"
         output += f"Total Value: £{self.get_total_value()}\n"
         output += "Exhibition Art Pieces:\n"
         for art_piece in self.art_pieces:
@@ -70,18 +73,20 @@ def test():
     art.price_increase()
     print(art)
 
-    exhibition = Exhibition('12/04/26','15/04/26')
+    exhibition = Exhibition('Expensive', '12/04/26', '15/04/26')
     print(exhibition)
     exhibition.add_art(art)
     exhibition.add_art(art2)
     print(exhibition)
-    exhibition2 = Exhibition('12/06/26','15/06/26')
+    exhibition2 = Exhibition('Cheap', '12/06/26', '15/06/26')
     print(exhibition2)
     exhibition2.add_art(art3)
     exhibition2.add_art(art4)
     print(exhibition2)
+    exhibition2.remove_art(art3)
+    print(exhibition2)
 
-    gallery = Gallery()
+    gallery = Gallery('The Louvre')
     print(gallery)
     gallery.add_exhibition(exhibition)
     gallery.add_exhibition(exhibition2)
