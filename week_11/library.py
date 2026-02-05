@@ -28,7 +28,6 @@ class DigitalBook(Book):
     compatibility_options = set(['Kindle', 'PDF', 'Apple'])
 
     def __init__(self, title, author, isbn):
-        # Call the superclass constructor with title, author, and isbn
         super().__init__(title, author, isbn)
         self.compatibility = {'Kindle'}
 
@@ -44,8 +43,6 @@ class DigitalBook(Book):
             return f"Compatibility is now {self.compatibility}"
 
     def __str__(self):
-        # Remove the pass and write code for this method
-        # (printing a digital book should also display its compatibility)
         output = f"Title is {self.title} written by {self.author} and ISBN {self.isbn} "
         output += f"and is compatible on {self.compatibility}"
         return output
@@ -107,8 +104,7 @@ def test_library():
     book4 = DigitalBook("1984", "George Orwell", "978-0451524935")
 
     library = Library()
-    # Add the books to the library here and try borrowing and returning them
-    # Remember to print the library object at each step
+
     library.add_book(book1)
     print(library)
     library.add_book(book2)
