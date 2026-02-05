@@ -79,26 +79,26 @@ def run_tests():
     u3 = Nitro("Power_User_Zoe")
     print(f"Created: {u1.username} (ID:{u1.user_id}), {u2.username} (ID:{u2.user_id}), {u3.username} (ID:{u3.user_id})")
 
-    # Unverified Tes
+    # Unverified Test
     result = u1.send_message(u2, "Hello world")
     print(f"Action: Send Message -> {result}")
 
     # Verified Test
     msg1 = "This is a short message."
-    print(f"Action: Send Valid -> {u2.send_message(u3, msg1)}")
+    print(f"Send Valid -> {u2.send_message(u3, msg1)}")
     
     long_msg = "This message is to test long messages. " * 10
-    print(f"Action: Send Too Long -> {u2.send_message(u3, long_msg)}")
+    print(f"Send Too Long -> {u2.send_message(u3, long_msg)}")
 
     # Nitro Test
-    print(f"Action: Send Long Message -> {u3.send_message(u1, long_msg)}")
+    print(f"Send Long Message -> {u3.send_message(u1, long_msg)}")
     
     u3.receive_message(Message("First basic message"))
     u3.receive_message(Message("IMPORTANT: PIN THIS ONE"))
     u3.receive_message(Message("Third basic message"))
     
-    print(f"Action: Pinning -> {u3.pin_message(1)}")
-    print(f"Action: Pinning -> {u3.pin_message(3)}")
+    print(f"Pinning -> {u3.pin_message(1)}")
+    print(f"Pinning -> {u3.pin_message(3)}")
 
     print(u1.get_inbox_view())
     print(u2.get_inbox_view())
