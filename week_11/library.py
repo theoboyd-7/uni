@@ -33,11 +33,9 @@ class DigitalBook(Book):
         self.compatibility = {'Kindle'}
 
     def borrow_book(self):
-        # Don't remove the pass
         pass
 
     def return_book(self):
-        # Don't remove the pass (same as borrow_book)
         pass
 
     def set_compatibility(self, compatibility):
