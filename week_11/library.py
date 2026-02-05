@@ -112,8 +112,11 @@ def test_library():
     # Add the books to the library here and try borrowing and returning them
     # Remember to print the library object at each step
     library.add_book(book1)
+    print(library)
     library.add_book(book2)
+    print(library)
     library.add_book(book3)
+    print(library)
     library.add_book(book4)
     print(library)
 
