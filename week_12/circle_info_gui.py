@@ -72,8 +72,8 @@ class Circle:
 
 
 def main():
-    calc = Circle()
-    calc.run()
+    circ = Circle()
+    circ.run()
 
 
 main()
