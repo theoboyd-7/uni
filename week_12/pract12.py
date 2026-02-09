@@ -1,5 +1,5 @@
 from tkinter import Tk, Frame, Label, Entry, Button, StringVar
-
+import csv
 
 class LoginApp:
 
@@ -86,12 +86,17 @@ class LoginApp:
 
 
 def main():
-    company_login_details = {
-        "YousefD": "VenterboSS",
-        "SergeiT": "25Operyu",
-        "YemiO": "Idec704",
-        "WinonaS": "IAmMel12"
-    }
+    company_login_details = {}
+    
+    with open("week_12/users.csv", "r") as file:
+        file = csv.reader(file)
+        for row in file:
+            if len(row) >= 2:
+                saved_username = row[0]
+                saved_password = row[1]
+
+                company_login_details[saved_username] = saved_password
+
     app = LoginApp(company_login_details)
     app.run()
 
