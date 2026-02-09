@@ -5,7 +5,7 @@ class ToDoToday:
     def __init__(self):
         self.win = Tk()
         self.win.title("What To Do Today")
-        self.win.geometry("400x150")
+        self.win.geometry("300x150")
 
         self.main_frame = Frame(self.win)
         self.main_frame.pack(padx=10, pady=10)
