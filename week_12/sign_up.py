@@ -1,5 +1,6 @@
 from tkinter import Tk, Frame, Label, Entry, Button, Checkbutton, StringVar, BooleanVar
 import re
+import csv
 
 class SignUp:
 
@@ -9,9 +10,7 @@ class SignUp:
         self.win.geometry("400x200")
 
         self.main_frame = Frame(self.win)
-        self.main_frame.grid(column=0, row=0)
-
-        self.login_details = []
+        self.main_frame.grid(column=0, row=0, padx=10, pady=10)
 
         self.username = StringVar()
         self.password = StringVar()
@@ -101,16 +100,29 @@ class SignUp:
         password = self.password.get()
         confirm_password = self.confirm_password.get()
 
+        username_taken = False
+
+        with open("week_12/users.csv", "r", newline="") as file:
+            file = csv.reader(file)
+            for row in file:
+                if row[0] == username:
+                    username_taken = True
+
         if len(password) >= 5:
             if re.search(r'\d', password) and re.search(r'[a-zA-Z]', password):
-                if username not in self.login_details:
+                if not username_taken:
                     if password == confirm_password:
-                        self.login_details.append(username)
                         self.message.set("Signed Up")
                         self.label_message.configure(fg="green")
+                        with open("week_12/users.csv", "a", newline="") as file:
+                            file = csv.writer(file)
+                            file.writerow([username, password])
                     else:
                         self.message.set("Passwords do not match!")
                         self.label_message.configure(fg="red")
+                else:
+                    self.message.set("Username already exists!")
+                    self.label_message.configure(fg="red")
             else:
                 self.message.set("Password must contain a letter/number")
                 self.label_message.configure(fg="red")
