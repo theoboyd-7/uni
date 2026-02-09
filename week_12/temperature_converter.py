@@ -1,5 +1,4 @@
-from tkinter import Tk, Frame, Label, Entry, Button, IntVar, StringVar
-import math
+from tkinter import Tk, Frame, Label, Entry, Button, IntVar
 
 class Temperature:
 
