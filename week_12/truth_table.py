@@ -18,7 +18,16 @@ class TruthTable:
         self.win.mainloop()
 
     def create_widgets(self):
-        Label(self.main_frame, text="Enter 1 for True, 0 for False").grid(row=0, column=0, columnspan=2, pady=10)
+        label = Label(
+            self.main_frame, 
+            text="Enter 1 for True, 0 for False"
+        )
+        label.grid(
+            row=0, 
+            column=0, 
+            columnspan=2, 
+            pady=10
+        )
 
         # Row 1
         label_row1 = Label(
