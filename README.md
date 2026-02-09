@@ -1,3 +1,3 @@
-University Year 1
+#UNI: Programming 2
 
-Programming 2 Module Worksheet Work
+Welcome to my repository for the Programming 2 university module. This repo contains a comprehensive collection of my solutions to weekly lab worksheets, focusing on advanced programming concepts, data structures, and algorithm implementation.
