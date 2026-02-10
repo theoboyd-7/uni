@@ -12,6 +12,12 @@ class CinemaTicket:
         if self._price > self.max_price:
             self._price = self.max_price
         return self._price
+    
+    @price.setter
+    def price(self, new_price):
+        if new_price <= self.max_price:
+            self._price = new_price
+        return self._price
 
     def apply_discount(self, percent):
         self._price = self._price * (1 - (percent / 100))
@@ -35,5 +41,8 @@ def test_cinema_ticket():
 
     ticket2.change_film("Avatar")
     print(ticket2)
+
+    ticket1.price = 15
+    print(ticket1)
 
 test_cinema_ticket()
