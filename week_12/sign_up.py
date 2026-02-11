@@ -117,6 +117,7 @@ class SignUp:
                         with open("week_12/users.csv", "a", newline="") as file:
                             file = csv.writer(file)
                             file.writerow([username, password])
+                        self.win.destroy()
                     else:
                         self.message.set("Passwords do not match!")
                         self.label_message.configure(fg="red")
