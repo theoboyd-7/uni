@@ -89,7 +89,7 @@ class CoffeeShopApp:
         name = self.new_customer_name.get()
         self.coffee_shop.add_customer(name)
         self.create_widgets()
-        self.new_customer_name.set("")  # Clear the entry box
+        self.new_customer_name.set("")
 
     def remove_customer(self, index):
         self.coffee_shop.remove_customer_at(index)
