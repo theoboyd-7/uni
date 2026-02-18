@@ -59,7 +59,7 @@ class LaptopShoppingApp:
                 row=i+1,
                 column=1,
                 padx=5,
-                pady=5,
+                pady=5
             )
             self.laptop_widgets.append(update_laptop_button)
 
@@ -72,7 +72,7 @@ class LaptopShoppingApp:
                 row=i+1,
                 column=2,
                 padx=5,
-                pady=5,
+                pady=5
             )
             self.laptop_widgets.append(remove_laptop_button)
 
@@ -84,7 +84,7 @@ class LaptopShoppingApp:
             row=count+1,
             column=0,
             padx=5,
-            pady=5,
+            pady=5
         )
         self.laptop_widgets.append(laptop_brand_entry)
 
@@ -96,7 +96,7 @@ class LaptopShoppingApp:
             row=count+1,
             column=1,
             padx=5,
-            pady=5,
+            pady=5
         )
         self.laptop_widgets.append(laptop_price_entry)
 
@@ -108,7 +108,7 @@ class LaptopShoppingApp:
             row=count+1,
             column=2,
             padx=5,
-            pady=5,
+            pady=5
         )
         self.laptop_widgets.append(laptop_ram_entry)
 
@@ -120,7 +120,7 @@ class LaptopShoppingApp:
             row=count+1,
             column=3,
             padx=5,
-            pady=5,
+            pady=5
         )
         self.laptop_widgets.append(laptop_gpu_entry)
 
@@ -141,7 +141,7 @@ class LaptopShoppingApp:
             row=count+1,
             column=4,
             padx=5,
-            pady=5,
+            pady=5
         )
         self.laptop_widgets.append(add_laptop_button)
 
