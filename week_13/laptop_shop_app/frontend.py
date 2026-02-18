@@ -19,6 +19,7 @@ class LaptopShoppingApp:
 
         self.laptop_widgets = []
         self.update_widgets = []
+        self.add_widgets = []
 
         self.new_laptop_brand = StringVar()
         self.new_laptop_price = DoubleVar(value=0.0)
@@ -27,6 +28,7 @@ class LaptopShoppingApp:
 
         self.ram_selected_option = StringVar(value=4)
         self.gpu_selected_option = StringVar(value="NVIDIA GTX 1650")
+        self.add_gpu_selected_option = StringVar(value="")
 
     def run(self):
         self.create_widgets()
@@ -76,74 +78,150 @@ class LaptopShoppingApp:
             )
             self.laptop_widgets.append(remove_laptop_button)
 
-        laptop_brand_entry = Entry(
-            self.main_frame,
-            textvariable=self.new_laptop_brand
-        )
-        laptop_brand_entry.grid(
+        add_laptop_button = Button(
+                self.main_frame,
+                text="Add Laptop",
+                command=self.add_laptop_window
+            )
+        add_laptop_button.grid(
             row=count+1,
             column=0,
             padx=5,
             pady=5
         )
-        self.laptop_widgets.append(laptop_brand_entry)
+        self.laptop_widgets.append(add_laptop_button) 
 
-        laptop_price_entry = Entry(
-            self.main_frame,
-            textvariable=self.new_laptop_price
+    def add_laptop_window(self):
+        self.delete_all_add_widgets()
+
+        self.ram_selected_option.set(4)
+        self.add_gpu_selected_option.set("")
+
+        add_win = Toplevel(self.win)
+        add_win.title("Add Laptop")
+
+        laptop_brand_label = Label(
+            add_win,
+            text="Enter Laptop Brand:"
         )
-        laptop_price_entry.grid(
-            row=count+1,
+        laptop_brand_label.grid(
+            row=0,
+            column=0,
+            padx=5,
+            pady=5
+        )
+        self.add_widgets.append(laptop_brand_label)
+
+        laptop_brand_entry = Entry(
+            add_win,
+            textvariable=self.new_laptop_brand
+        )
+        laptop_brand_entry.grid(
+            row=0,
             column=1,
             padx=5,
             pady=5
         )
-        self.laptop_widgets.append(laptop_price_entry)
+        self.add_widgets.append(laptop_brand_entry)
 
-        laptop_ram_entry = Entry(
-            self.main_frame,
-            textvariable=self.new_laptop_ram
+        laptop_price_label = Label(
+            add_win,
+            text="Enter Laptop Base Price:"
         )
-        laptop_ram_entry.grid(
-            row=count+1,
+        laptop_price_label.grid(
+            row=0,
             column=2,
             padx=5,
             pady=5
         )
-        self.laptop_widgets.append(laptop_ram_entry)
+        self.add_widgets.append(laptop_price_label)
 
-        laptop_gpu_entry = Entry(
-            self.main_frame,
-            textvariable=self.new_laptop_gpu
+        laptop_price_entry = Entry(
+            add_win,
+            textvariable=self.new_laptop_price
         )
-        laptop_gpu_entry.grid(
-            row=count+1,
+        laptop_price_entry.grid(
+            row=0,
             column=3,
             padx=5,
             pady=5
         )
-        self.laptop_widgets.append(laptop_gpu_entry)
+        self.add_widgets.append(laptop_price_entry)
+
+        laptop_ram_label = Label(
+            add_win,
+            text="Enter Laptop Ram:"
+        )
+        laptop_ram_label.grid(
+            row=0,
+            column=4,
+            padx=5,
+            pady=5
+        )
+        self.add_widgets.append(laptop_ram_label)
+
+        ram_option_menu = OptionMenu(
+            add_win,
+            self.ram_selected_option,
+            4,
+            8,
+            16,
+            32
+        )
+        ram_option_menu.grid(
+            row=0,
+            column=5
+        )
+        self.update_widgets.append(ram_option_menu)
+
+        laptop_gpu_label = Label(
+            add_win,
+            text="Enter Laptop GPU (if Gaming Laptop, else leave blank):"
+        )
+        laptop_gpu_label.grid(
+            row=0,
+            column=6,
+            padx=5,
+            pady=5
+        )
+        self.add_widgets.append(laptop_gpu_label)
+
+        gpu_option_menu = OptionMenu(
+            add_win,
+            self.add_gpu_selected_option,
+            "",
+            "NVIDIA GTX 1650",
+            "NVIDIA RTX 3070",
+            "NVIDIA RTX 4080",
+            "AMD RX 6800M"
+        )
+        gpu_option_menu.grid(
+            row=0,
+            column=7
+        )
+        self.update_widgets.append(gpu_option_menu)
 
         add_laptop_button = Button(
-            self.main_frame,
+            add_win,
             text="Add",
             command=lambda: [
                 self.add_laptop(
                     self.new_laptop_brand.get(), 
                     self.new_laptop_price.get(), 
-                    self.new_laptop_ram.get(), 
-                    self.new_laptop_gpu.get()
+                    self.ram_selected_option.get(),
+                    self.add_gpu_selected_option.get()
                 ), 
+                add_win.destroy(),
                 self.create_widgets()
             ]
         )
         add_laptop_button.grid(
-            row=count+1,
-            column=4,
+            row=1,
+            column=0,
             padx=5,
             pady=5
         )
-        self.laptop_widgets.append(add_laptop_button)
+        self.add_widgets.append(add_laptop_button)
 
     def add_laptop(self, brand, price, ram=4, gpu=""):
         price = float(price)
@@ -160,8 +238,8 @@ class LaptopShoppingApp:
             self.shopping_cart.add_laptop(new_gaming_laptop)
         
         self.new_laptop_brand.set("")
-        self.new_laptop_price.set("")
-        self.new_laptop_ram.set("")
+        self.new_laptop_price.set(0.0)
+        self.new_laptop_ram.set(4)
         self.new_laptop_gpu.set("")
         self.create_widgets()
 
@@ -270,6 +348,10 @@ class LaptopShoppingApp:
             widget.destroy()
         self.update_widgets = []
 
+    def delete_all_add_widgets(self):
+        for widget in self.add_widgets:
+            widget.destroy()
+        self.add_widgets = []
 
 def main():
     shopping_cart = ShoppingCart()
