@@ -89,7 +89,19 @@ class LaptopShoppingApp:
             padx=5,
             pady=5
         )
-        self.laptop_widgets.append(add_laptop_button) 
+        self.laptop_widgets.append(add_laptop_button)
+
+        cart_total_label = Label(
+            self.main_frame,
+            text=f"The cart total is: £{self.shopping_cart.total:.2f}"
+        )
+        cart_total_label.grid(
+            row=count+2,
+            column=0,
+            padx=5,
+            pady=5
+        )
+        self.laptop_widgets.append(cart_total_label)
 
     def add_laptop_window(self):
         self.delete_all_add_widgets()
