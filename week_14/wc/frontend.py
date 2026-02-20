@@ -1,5 +1,5 @@
 from tkinter import Tk, Frame, Label, Button, messagebox, filedialog, StringVar
-from wc import wc
+from backend import wc
 
 class FileStatsApp:
     def __init__(self):
