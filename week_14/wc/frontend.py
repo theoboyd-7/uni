@@ -71,8 +71,6 @@ class FileStatsApp:
             
         except FileNotFoundError:
             messagebox.showerror("Error", f"Could not find the file:\n{filename}")
-        except UnicodeDecodeError:
-            messagebox.showerror("Error", "Please select a plain text file (.txt)!")
 
 
 def main():
